@@ -1,10 +1,20 @@
 package com.Swadha1.Springapllication;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-/**
- * Spring Data JPA repository for the Visitor entity.
- * Hibernate auto-creates the "visitors" table on startup.
- */
-public interface VisitorRepository extends JpaRepository<Visitor, Long> {
+import java.util.concurrent.atomic.AtomicLong;
+
+@Repository
+public class VisitorRepository {
+
+    private final AtomicLong visitCount = new AtomicLong(0);
+
+    public Visitor save(Visitor visitor) {
+        visitCount.incrementAndGet();
+        return visitor;
+    }
+
+    public long count() {
+        return visitCount.get();
+    }
 }
