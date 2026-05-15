@@ -810,12 +810,13 @@ footer {
     }
 
     .blob-shape {
-        width: 280px;
-        height: 280px;
+        width: 300px;
+        height: 300px;
     }
 
     .profile-img {
-        object-position: top center;
+        object-fit: contain;
+        object-position: center center;
     }
 
     /* ── About ── */
